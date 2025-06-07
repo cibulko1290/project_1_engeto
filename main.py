@@ -41,8 +41,8 @@ users = {
 delimiter = '-' * 40
 number = len(TEXTS)
 
-name = input('username: ')
-password = input('password: ')
+name = input('Enter your username: ')
+password = input('Enter your password: ')
 
 '''
 First condition:
@@ -52,7 +52,7 @@ Unregistred user is not allow to continue.
 Terminating the program.
 '''
 
-if name in users and password == users.get(name):
+if name in users and password == users[name]:
     print(delimiter) 
     print(f'Welcome to the app, {name}')
     print(f'We have {number} texts to be analysed.')
@@ -76,36 +76,30 @@ if name in users and password == users.get(name):
 
         '''
         Analyzing of selected text.
-        Printing the results via f-strings
+        Printing the results via f-string.
         '''
 
         words_number = len(N.split())
-        S_1 = f'There are {words_number} words in the selected text.'
 
         capital_letters = [word for word in N.split() if word.istitle()]
         CL =len(capital_letters)
-        S_2 = f'There are {CL} titlecase words.'
 
         upper_case = [word for word in N.split() if word.isupper()]
         UC= len(upper_case)
-        S_3 = f'There are {UC} uppercase words.'
 
         lower_case = [word for word in N.split() if word.islower()]
         LC= len(lower_case)
-        S_4 = f'There are {LC} lowercase words.'
 
-        numeric_strings = [word for word in N.split() if word.isnumeric()]
+        numeric_strings = [int(num) for num in N.split() if num.isnumeric()]
         NS = len(numeric_strings)
-        S_5 = f'There are {NS} numeric strings.'
+        total = sum(numeric_strings)
 
-        suma = []
-        for num in N.split():
-             if num.isnumeric():
-                suma.append(int(num))
-                total = sum(suma)
-        S_6 = f'The sum of all numbers {total}.'
-
-        print(S_1,S_2,S_3,S_4,S_5,S_6, sep='\n')
+        print(f'''There are {words_number} words in the selected text. 
+There are {CL} titlecase words. 
+There are {UC} uppercase words. 
+There are {LC} lowercase words. 
+There are {NS} numeric strings. 
+The sum of all numbers {total}.''')
         print(delimiter)
 
         '''
@@ -116,130 +110,19 @@ if name in users and password == users.get(name):
         Output is a simple table.
         '''
 
-        L_1 = 0
+        punctation = '.,?!;:\'"'
+        words_length = {}
         for word in N.split():
-            if len(word) == 1 and word.isalnum():
-                L_1 += 1
-            elif len(word) == 2 and word[-1]  == '.':
-                L_1 += 1
-            elif len(word) == 2 and word[-1]  == ',':
-                L_1 += 1
-            
-        L_2 = 0
-        for word in N.split():
-            if len(word) == 2 and word.isalnum():
-                L_2 += 1
-            elif len(word) == 3 and word[-1]  == '.':
-                L_2 += 1
-            elif len(word) == 3 and word[-1]  == ',':
-                L_2 += 1
-
-        L_3 = 0
-        for word in N.split():
-            if len(word) == 3 and word.isalnum():
-                L_3 += 1
-            elif len(word) == 4 and word[-1]  == '.':
-                L_3 += 1
-            elif len(word) == 4 and word[-1]  == ',':
-                L_3 += 1
-
-        L_4 = 0
-        for word in N.split():
-            if len(word) == 4 and word.isalnum():
-                L_4 += 1
-            elif len(word) == 5 and word[-1]  == '.':
-                L_4 += 1
-            elif len(word) == 5 and word[-1]  == ',':
-                L_4 += 1
-
-        L_5 = 0
-        for word in N.split():
-            if len(word) == 5 and word.isalnum():
-                L_5 += 1
-            elif len(word) == 6 and word[-1]  == '.':
-                L_5 += 1
-            elif len(word) == 6 and word[-1]  == ',':
-                L_5 += 1
-
-        L_6 = 0
-        for word in N.split():
-            if len(word) == 6 and word.isalnum():
-                L_6 += 1
-            elif len(word) == 7 and word[-1]  == '.':
-                L_6 += 1
-            elif len(word) == 7 and word[-1]  == ',':
-                L_6 += 1
-
-        L_7 = 0
-        for word in N.split():
-            if len(word) == 7 and word.isalnum():
-                L_7 += 1
-            elif len(word) == 8 and word[-1]  == '.':
-                L_7 += 1
-            elif len(word) == 8 and word[-1]  == ',':
-                L_7 += 1
-
-        L_8 = 0
-        for word in N.split():
-            if len(word) == 8 and word.isalnum():
-                L_8 += 1
-            elif len(word) == 9 and word[-1]  == '.':
-                L_8 += 1
-            elif len(word) == 9 and word[-1]  == ',':
-                L_8 += 1
-
-        L_9 = 0
-        for word in N.split():
-            if len(word) == 9 and word.isalnum():
-                L_9 += 1
-            elif len(word) == 10 and word[-1]  == '.':
-                L_9 += 1
-            elif len(word) == 10 and word[-1]  == ',':
-                L_9 += 1
-
-        L_10 = 0
-        for word in N.split():
-            if len(word) == 10 and word.isalnum():
-                L_10 += 1
-            elif len(word) == 11 and word[-1]  == '.':
-                L_10 += 1
-            elif len(word) == 11 and word[-1]  == ',':
-                L_10 += 1
-
-        L_11 = 0
-        for word in N.split():
-            if len(word) == 11 and word.isalnum():
-                L_11 += 1
-            elif len(word) == 12 and word[-1]  == '.':
-                L_11 += 1
-            elif len(word) == 12 and word[-1]  == ',':
-                L_11 += 1
-
-        print("{0: >5} {1: <18} {2: <1} ".format
-              ("LEN |", "OCCURRENCES", '| NR.'))
-        print(delimiter)
-        print("{0: >5} {1: <18} {2: <1} {3: <3}".format
-              ("1 |", "*" * L_1, '|', L_1))
-        print("{0: >5} {1: <18} {2: <1} {3: <3}".format
-              ("2 |", "*" * L_2, '|', L_2))
-        print("{0: >5} {1: <18} {2: <1} {3: <3}".format
-              ("3 |", "*" * L_3, '|', L_3))
-        print("{0: >5} {1: <18} {2: <1} {3: <3}".format
-              ("4 |", "*" * L_4, '|', L_4))
-        print("{0: >5} {1: <18} {2: <1} {3: <3}".format
-              ("5 |", "*" * L_5, '|', L_5))
-        print("{0: >5} {1: <18} {2: <1} {3: <3}".format
-              ("6 |", "*" * L_6, '|', L_6))
-        print("{0: >5} {1: <18} {2: <1} {3: <3}".format
-              ("7 |", "*" * L_7, '|', L_7))
-        print("{0: >5} {1: <18} {2: <1} {3: <3}".format
-              ("8 |", "*" * L_8, '|', L_8))
-        print("{0: >5} {1: <18} {2: <1} {3: <3}".format
-              ("9 |", "*" * L_9, '|', L_9))
-        print("{0: >5} {1: <18} {2: <1} {3: <3}".format
-              ("10 |", "*" * L_10, '|', L_10))
-        print("{0: >5} {1: <18} {2: <1} {3: <3}".format
-              ("11 |", "*" * L_11, '|', L_11))
+            word_length = len(word.strip(punctation))
+            if word_length in words_length:
+                words_length[word_length] += 1
+            else:
+                words_length[word_length] = 1
                 
+        print('{0: >5} {1: <16} {2: <1} '.format('LEN |', 'OCCURRENCES', '| NR.'))
+        print(delimiter)
+        for word_length in sorted(words_length):
+            print('{0: >3} {1: <1} {2: <16} {3: <1} {4: <3}'.format(word_length, '|', '*' * words_length[word_length], '|', words_length[word_length]))
+                     
 else:
     print('unregistered user, terminating the program..')
