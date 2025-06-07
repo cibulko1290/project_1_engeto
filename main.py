@@ -104,10 +104,8 @@ The sum of all numbers {total}.''')
 
         '''
         Counting the occurrence of words acording to their lenghts.
-        Every lenght is counting separetly.
-        The words are selected to 11 groups.
-        The longer than 11- letters words are NOT considered.
-        Output is a simple table.
+        Every lenght is counting automaticly.
+        Output of occurrence is sorted ascending.
         '''
 
         punctation = '.,?!;:\'"'
