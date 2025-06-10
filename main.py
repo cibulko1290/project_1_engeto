@@ -46,9 +46,9 @@ password = input('Enter your password: ')
 
 '''
 First condition:
-Checking the registred users.
-Registred user can enter to the program and select number of the text.
-Unregistred user is not allow to continue.
+Checking the registered users.
+Registered user can enter the program and choose one of the texts.
+Unregistered user is not allowed to continue.
 Terminating the program.
 '''
 
@@ -62,50 +62,48 @@ if name in users and password == users[name]:
 
     '''
     Second condition:
-    During selecting of text is necessary to check an input.
-    The program will end when input is a number out of range or a text.
-    The user will be warned.
-    Program will continue when input is a number in defined range.
+    It is necessary to check an input during the selection of the text.
+    The program will end when the input is a number out of the range 
+    or contains letters. The user will be warned.
+    Program will continue only when the input is a number in the defined range.
     '''
+
     if not number_of_text.isdigit():
         print('The text is not allowed, terminating the program.')
-    elif int(number_of_text) > number:
+    elif int(number_of_text) > number or int(number_of_text) == 0:
         print('The number is out of range, terminating the program.')
     elif int(number_of_text) <= number:
         N = TEXTS[int(number_of_text)-1]
 
         '''
-        Analyzing of selected text.
+        Analyzing selected text.
         Printing the results via f-string.
         '''
 
         words_number = len(N.split())
 
-        capital_letters = [word for word in N.split() if word.istitle()]
-        CL =len(capital_letters)
-
-        upper_case = [word for word in N.split() if word.isupper()]
-        UC= len(upper_case)
-
-        lower_case = [word for word in N.split() if word.islower()]
-        LC= len(lower_case)
-
+        capital_letters = len([word for word in N.split() if word.istitle()])
+        
+        upper_case = len([word for word in N.split() if word.isupper()])
+        
+        lower_case = len([word for word in N.split() if word.islower()])
+        
         numeric_strings = [int(num) for num in N.split() if num.isnumeric()]
-        NS = len(numeric_strings)
+        num_strings = len(numeric_strings)
         total = sum(numeric_strings)
 
         print(f'''There are {words_number} words in the selected text. 
-There are {CL} titlecase words. 
-There are {UC} uppercase words. 
-There are {LC} lowercase words. 
-There are {NS} numeric strings. 
+There are {capital_letters} titlecase words. 
+There are {upper_case} uppercase words. 
+There are {lower_case} lowercase words. 
+There are {num_strings} numeric strings. 
 The sum of all numbers {total}.''')
         print(delimiter)
-
+    
         '''
         Counting the occurrence of words acording to their lenghts.
         Every lenght is counting automaticly.
-        Output of occurrence is sorted ascending.
+        Output of occurrence is sorted in ascending order.
         '''
 
         punctation = '.,?!;:\'"'
@@ -117,10 +115,14 @@ The sum of all numbers {total}.''')
             else:
                 words_length[word_length] = 1
                 
-        print('{0: >5} {1: <16} {2: <1} '.format('LEN |', 'OCCURRENCES', '| NR.'))
+        print('{0: >5} {1: <20} {2: <1} '.
+              format('LEN |', 'OCCURRENCES', '| NR.'))
         print(delimiter)
         for word_length in sorted(words_length):
-            print('{0: >3} {1: <1} {2: <16} {3: <1} {4: <3}'.format(word_length, '|', '*' * words_length[word_length], '|', words_length[word_length]))
+            print('{0: >3} {1: <1} {2: <20} {3: <1} {4: <3}'.
+                  format(word_length, '|', 
+                    '*' * words_length[word_length],
+                    '|', words_length[word_length]))
                      
 else:
     print('unregistered user, terminating the program..')
